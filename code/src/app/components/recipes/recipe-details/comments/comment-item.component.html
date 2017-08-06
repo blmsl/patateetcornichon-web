@@ -1,0 +1,34 @@
+<ul [ngClass]="type === 'children' ? 'comments-child' : null">
+  <li *ngFor="let comment of comments">
+    <article class="row">
+      <div class="col-sm-3 col-md-2 col-avatar">
+        <img
+          class="avatar"
+          [attr.alt]="comment.author"
+          [attr.src]="comment.author_avatar">
+      </div>
+      <div class="col-12 col-sm-9 col-md-10">
+        <div class="comment-meta">
+          <a *ngIf="comment.author_url" [attr.href]="comment.author_url" rel="nofollow" target="_blank">
+            <span class="author">{{comment.author}}</span>
+          </a>
+          <span class="author" *ngIf="!comment.author_url">{{comment.author}}</span> -
+          <span class="created-at">{{comment.created_at | moment: 'humanize'}}</span>
+          <button
+            (click)="getParentId(comment.id, comment.author)"
+            class="btn btn-transparent">
+            <i class="material-icons">reply</i> Répondre
+          </button>
+        </div>
+        <div class="comment-content" [innerHTML]="(comment.content | safe: 'html')"></div>
+      </div>
+    </article>
+    <pec-comment-item
+      *ngIf="comment.sub_comments?.length > 0"
+      (onGetParentId)="getParentId(comment.id, comment.author)"
+      [comments]="comment.sub_comments"
+      [type]="'children'">
+    </pec-comment-item>
+    <hr *ngIf="type === 'parent'">
+  </li>
+</ul>

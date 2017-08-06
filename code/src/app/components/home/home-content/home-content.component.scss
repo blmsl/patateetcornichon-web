@@ -1,0 +1,323 @@
+@import '../../../../assets/scss/variables';
+
+/*
+ * PHONES
+ */
+
+h4 {
+  font-family: $secondary-font;
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.main-widgets {
+  .main-widgets-titles {
+    text-align: center;
+    position: relative;
+  }
+  h4 {
+    margin: 35px 0 10px;
+    width: 100%;
+    &.hi-there {
+      position: absolute;
+      top: 60px;
+      width: 100%;
+    }
+  }
+
+  h5 {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 300;
+    width: 100%;
+  }
+}
+
+.pec-selection {
+  display: none;
+}
+
+.pec-presentation {
+  display: none;
+}
+
+/* MORE RECIPES */
+.more-recipes {
+  margin: 30px auto 30px auto;
+  height: 75px;
+  width: 100%;
+  display: block;
+  font-family: $secondary-font;
+  text-transform: lowercase;
+  font-size: 40px;
+  text-align: center;
+  text-decoration: none;
+
+  .face-primary,
+  .face-secondary {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+  }
+
+  .face-primary {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  .face-secondary {
+    display: none;
+  }
+
+}
+
+/*
+ * TABLETS
+ */
+@media only screen and (min-width: $tablets) {
+
+  /* MORE RECIPES */
+  .more-recipes {
+    margin: 50px auto 10px auto;
+    width: 400px;
+    display: flex;
+    border: 4px solid $primary-color;
+    text-transform: lowercase;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: $primary-color;
+    overflow: hidden;
+
+    .face-primary,
+    .face-secondary {
+      display: block;
+      transition: margin .4s;
+    }
+
+    .face-primary {
+      margin-top: 70px;
+    }
+
+    &:hover .face-primary {
+      margin-top: -80px;
+    }
+  }
+
+}
+
+/*
+ * LARGE
+ */
+@media only screen and (min-width: $large) {
+
+  .pec-presentation {
+    display: block;
+  }
+
+  .pec-selection {
+    display: block;
+
+    .pec-selection-items {
+      display: flex;
+      flex-wrap: wrap;
+      height: 400px;
+
+      .pec-selection-item {
+        width: 50%;
+        height: 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          filter: $brightness;
+          transition: $transition;
+        }
+        h6 {
+          display: none;
+          position: absolute;
+          margin: 0;
+          padding: 20px 30px;
+          font-size: 2.5em;
+          color: #ffffff;
+          text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+          line-height: 1em;
+          bottom: 30px;
+          left: 0;
+        }
+
+        &:hover {
+          img {
+            filter: brightness(100%);
+          }
+
+          h6 {
+            display: block;
+            animation: bottomToTop .3s ease-out, hiddenToVisible .4s ease-in-out;
+
+            @keyframes bottomToTop {
+              from {
+                bottom: 0;
+              }
+              to {
+                bottom: 30px;
+              }
+            }
+            @keyframes hiddenToVisible {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* MAIN WIDGETS */
+  .main-widgets {
+    margin-top: 40px;
+    .main-widgets-titles {
+      height: 155px;
+    }
+    h4 {
+      margin: 35px 0;
+    }
+
+    h6.recipe-title {
+      text-transform: uppercase;
+      font-size: 24px;
+    }
+
+    img.recipe-image {
+      filter: $brightness;
+      transition: $transition;
+    }
+
+    .presentation-picture {
+      position: relative;
+      margin: 0 15px 30px 15px;
+      background-size: cover;
+      background-clip: content-box;
+      width: 100%;
+      &.whoareus {
+        height: 251px;
+        background-image: url(https://res.cloudinary.com/dte02b2iw/image/upload/v1486488863/common/whoareus.jpg);
+        h5 {
+          font-family: $secondary-font;
+          font-size: 38px;
+          margin: 0;
+        }
+        h6 {
+          text-transform: uppercase;
+          font-size: 18px;
+          margin: 20px 0 20px 0;
+        }
+        .group-titles {
+          position: absolute;
+          bottom: 30px;
+        }
+        h5, h6 {
+          color: #fff;
+          text-align: center;
+          width: 100%;
+          display: block;
+          padding: 0 60px;
+        }
+      }
+      &.icon-cta a {
+        $icon-size: 120px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        h6 {
+          color: $primary-color;
+          margin: 0;
+          font-size: 1.2em;
+          max-width: $icon-size;
+          i {
+            vertical-align: middle;
+          }
+        }
+
+        span {
+          text-align: center;
+          height: $icon-size;
+          width: $icon-size;
+          border-radius: 50%;
+          background-color: $primary-color;
+
+          i {
+            font-size: 70px;
+            color: white;
+            line-height: $icon-size;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/*
+ * DESKTOPS
+ */
+@media only screen and (min-width: $desktop) {
+  .pec-selection {
+    .pec-selection-items {
+      height: 500px;
+    }
+  }
+
+  /* MAIN WIDGETS */
+  .main-widgets {
+
+    .presentation-picture {
+
+      &.whoareus {
+        height: 325px;
+      }
+      &.icon-cta a {
+        $icon-size: 145px;
+
+        h6 {
+          font-size: 1.5em;
+          max-width: 150px;
+        }
+
+        span {
+          height: $icon-size;
+          width: $icon-size;
+          border-radius: 50%;
+          transform: scale(.9);
+          transition: $transition;
+
+          i {
+            font-size: 100px;
+            line-height: $icon-size;
+          }
+        }
+
+        &:hover {
+          span {
+            transform: scale(1);
+          }
+        }
+      }
+
+    }
+  }
+
+}

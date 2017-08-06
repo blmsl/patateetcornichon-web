@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>{{title}}</h4>
+  </div>
+</div>
+<div class="row">
+  <div #slides class="col-md-12 slideshow">
+
+    <div #prev class="prev"
+         (click)="scrollDiv('left')">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <div class="slides" id="slides" #slidesDiv>
+      <div class="recipes">
+        <a *ngFor="let recipe of recipes; let i = index" [routerLink]="recipe | recipeUrl">
+          <div class="item" [ngClass]="i === mainImg ? 'main-img' : null">
+            <div class="recipe-infos">
+              <h6 *ngIf="i === mainImg">
+                <span class="upper-title main-img-title">{{recipe.title}}</span>
+                <span class="subtitle">{{recipe.sub_title}}</span>
+              </h6>
+              <h6 *ngIf="i !== mainImg">
+                <span class="upper-title">{{recipe.title}}</span><span class="subtitle"><span>{{recipe.sub_title}}</span></span>
+              </h6>
+              <span class="created-at">
+                <i class="material-icons">access_time</i> {{recipe.created_at | moment: 'humanize'}}
+              </span>
+              <p class="recipe-description" *ngIf="i === mainImg">
+                {{recipe.meta_description}}
+              </p>
+            </div>
+            <img
+              [attr.src]="recipe.main_image.medium_size"
+              [attr.alt]="recipe.full_title">
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div #next class="next"
+         (click)="scrollDiv('right')">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </div>
+  </div>
+</div>

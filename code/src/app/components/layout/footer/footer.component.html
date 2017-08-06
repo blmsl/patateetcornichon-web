@@ -1,0 +1,86 @@
+<footer>
+  <div class="container">
+
+    <div class="footer-container">
+
+      <!-- FOOTER WIDGETS -->
+      <div class="row">
+
+        <!-- FAVORITE COMMENTS -->
+        <div class="col-lg-4 comments">
+          <div class="footer-title">
+            <h3>Les commentaires <i style="margin-left: 5px; color: #f69597;" class="fa fa-heart" aria-hidden="true"></i></h3>
+            <ul>
+              <li *ngFor="let comment of favoriteComments | async">
+                <blockquote>
+                  {{comment.content | escape }}
+                  <div class="meta">
+                    - {{comment.author}} | <a [routerLink]="['/recettes', comment.recipe_informations.slug]"> {{ comment.recipe_informations.full_title }}</a>
+                  </div>
+                </blockquote>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END FAVORITE COMMENTS -->
+
+        <!-- INSTAGRAM -->
+        <div class="col-lg-4 instagram">
+          <div class="footer-title">
+            <h3>Instagram</h3>
+          </div>
+          <div class="insta-footer" *ngIf="instagramMedias">
+            <a *ngFor="let instaImg of instagramMedias" [href]="instaImg.link" target="_blank" [title]="instaImg.caption.text">
+              <img [attr.src]="instaImg.images.thumbnail.url" alt="Instagram Patate & Cornichon"/>
+            </a>
+          </div>
+          <a class="btn btn-transparent btn-block" [href]="socialUrls.instagram" target="_blank">Suis-nous sur insta ;)</a>
+        </div>
+        <!-- END INSTAGRAM -->
+
+        <!-- CATEGORIES -->
+        <div class="col-lg-4 categories">
+          <div class="footer-title">
+            <h3>Catégories</h3>
+          </div>
+          <ul class="list-categories">
+            <li *ngFor="let category of categories" class="parent-category">
+              <a [routerLink]="['/recettes/categories', category.slug]">{{category.name}}</a>
+
+              <ul class="list-sub-categories" *ngIf="category.subcategories.length > 0">
+                <li *ngFor="let subcategory of category.subcategories" class="sub-category">
+                  <a [routerLink]="['/recettes/categories', category.slug, subcategory.slug]">{{subcategory.name}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- END CATEGORIES -->
+      </div>
+      <!-- END FOOTER WIDGETS -->
+
+      <!-- FOOTER SOCIAL -->
+      <div class="row">
+        <ul class="social">
+          <li class="facebook"><a [href]="socialUrls.facebook" target="_blank">Facebook</a></li>
+          <li class="twitter"><a [href]="socialUrls.twitter" target="_blank">Twitter</a></li>
+          <li class="instagram"><a [href]="socialUrls.instagram" target="_blank">Instagram</a></li>
+          <li class="googleplus"><a [href]="socialUrls.googleplus" target="_blank">Google +</a></li>
+          <li class="youtube"><a [href]="socialUrls.youtube" target="_blank">Youtube</a></li>
+        </ul>
+      </div>
+      <!-- END FOOTER SOCIAL -->
+
+    </div>
+
+  </div>
+
+  <!-- MENTIONS -->
+  <div class="container-fluid mentions">
+    <p class="copyright">© {{currentYear}} patate & cornichon. tous droits réservés.</p>
+    <p><a routerLink="/mentions-legales">Mentions légales</a></p>
+  </div>
+  <!-- END MENTIONS -->
+
+</footer>
+

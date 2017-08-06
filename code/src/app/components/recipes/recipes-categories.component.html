@@ -1,0 +1,24 @@
+<div class="all-categories">
+  <ul class="main-categories-list">
+    <li *ngFor="let category of categories">
+      <span
+        [class.active]="selectedCategory === category.slug"
+        (click)="changeCategory(category, 'category')">
+        <i class="ri {{category.css_class}}"></i>
+        <span class="category-name">{{category.name}}</span>
+      </span>
+    </li>
+  </ul>
+  <div class="subcategories">
+    <ul class="subcategories-list" *ngIf="selectedCategory && categories">
+      <li *ngFor="let subcategory of getSubcategories(selectedCategory)">
+        <button
+          class="btn"
+          [class.active]="selectedSubcategory === subcategory.slug"
+          (click)="changeCategory(subcategory, 'subcategory')">
+          {{subcategory.name}}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

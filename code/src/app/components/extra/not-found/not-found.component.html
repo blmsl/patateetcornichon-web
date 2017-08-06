@@ -1,0 +1,12 @@
+<div class="main container">
+  <img class="donut"
+       alt="Page non trouvée"
+       [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1488980171/common/404.png' |
+       cloudinary:'common':'w_600,f_auto':'png' " />
+  <h1>Oups !</h1>
+  <h2>La page demandée a été mangée vivante.</h2>
+  <div class="actions">
+    <a class="btn btn-orange" routerLink="/">Homepage</a>
+    <a class="btn btn-transparent" routerLink="/recettes">Recettes</a>
+  </div>
+</div>

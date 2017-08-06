@@ -1,0 +1,35 @@
+<md-spinner *ngIf="!recipes"></md-spinner>
+<p *ngIf="recipes?.length === 0" class="no-result fadeIn">Oups ! Aucun résultat</p>
+
+<div class="recipes-list" *ngIf="recipes?.length > 0">
+    <md-card class="single fadeIn" *ngFor="let recipe of recipes">
+      <a [routerLink]="recipe | recipeUrl">
+        <div class="featured-image">
+          <img [attr.alt]="recipe.full_title"  md-card-image [attr.src]="recipe.main_image.medium_size">
+        </div>
+        <md-card-content>
+          <h2>{{recipe.full_title}}</h2>
+          <span class="created-at">
+            <i class="material-icons">access_time</i> {{recipe.created_at | moment: 'humanize'}}
+          </span>
+          <div class="recipe-meta">
+            <div class="item recipe-categories">
+              <h3>Catégories :</h3>
+              <span *ngFor="let category of recipe.categories">{{category.name}}</span>
+            </div>
+            <div class="item">
+              <h3>Difficulté :</h3>
+              <span>{{recipe.difficulty | getDifficulty}}</span>
+            </div>
+            <div class="item">
+              <h3>Temps :</h3>
+              <span>{{[recipe.preparation_time, recipe.cooking_time] | minutesToHours}}</span>
+            </div>
+          </div>
+          <p>{{recipe.introduction | escape | truncate: 250}}</p>
+        </md-card-content>
+      </a>
+    </md-card>
+</div>
+<md-spinner *ngIf="pending"></md-spinner>
+<button class="more-recipes" *ngIf="moreRecipes && !pending" (click)="addMoreRecipes()"></button>

@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "RecipeIcons";
+  src: url(/assets/fonts/recipes-icons/recipes-icons.eot);
+  src:  url(/assets/fonts/recipes-icons/recipes-icons.eot?#iefix) format("embedded-opentype"),
+        url(/assets/fonts/recipes-icons/recipes-icons.woff) format("woff"),
+        url(/assets/fonts/recipes-icons/recipes-icons.ttf) format("truetype"),
+        url(/assets/fonts/recipes-icons/recipes-icons.svg#Flaticon) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url(/assets/fonts/recipes-icons/recipes-icons.svg#Flaticon) format("svg");
+  }
+}
+
+.ri:before{
+  display: inline-block;
+  font-family: "RecipeIcons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.recipe-icon-stove:before { content: "\f100"; }
+.recipe-icon-pan:before { content: "\f101"; }
+.recipe-icon-burgers-potatoes:before { content: "\f102"; }
+.recipe-icon-coffee:before { content: "\f103"; }
+.recipe-icon-cocktail:before { content: "\f104"; }
+.recipe-icon-salad:before { content: "\f105"; }
+.recipe-icon-vegetable-basket:before { content: "\f106"; }
+.recipe-icon-pizza:before { content: "\f107"; }
+.recipe-icon-nachos:before { content: "\f108"; }
+.recipe-icon-birthday-cake:before { content: "\f109"; }
+.recipe-icon-burger:before { content: "\f110"; }
+.recipe-icon-bread:before { content: "\f111"; }
+.recipe-icon-pasta:before { content: "\f112"; }
+.recipe-icon-breads:before { content: "\f113"; }
+.recipe-icon-pancakes:before { content: "\f114"; }
+.recipe-icon-salad-bowl:before { content: "\f115"; }
+.recipe-icon-piece-cake:before { content: "\f116"; }
+.recipe-icon-pie:before { content: "\f117"; }
+.recipe-icon-icecream:before { content: "\f118"; }

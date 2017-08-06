@@ -1,0 +1,180 @@
+@import '../../../../../assets/scss/variables.scss';
+
+:host {
+  margin-top: 60px;
+  display: block;
+}
+
+/* COMMENTS NUMBER */
+.commentsNb h3 {
+  font-family: $secondary-font;
+  font-size: 48px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* UL ARTICLE */
+ul {
+  list-style: none;
+  padding: 0;
+  &.comments-child {
+    padding-left: 40px;
+  }
+
+  article {
+    margin-bottom: 20px;
+    margin-right: 0;
+    margin-left: 0;
+    .col-avatar {
+      display: none;
+    }
+  }
+}
+
+/* COMMENT META */
+.comment-meta {
+  position: relative;
+  padding-bottom: 15px;
+  &:after {
+    transition: $transition;
+    content: "";
+    background: #f9f9f9;
+    height: 5px;
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  /* CREATED AT */
+  .created-at {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  /* BUTTON */
+  button {
+    text-transform: none;
+    display: block;
+    margin-top: 10px;
+    padding: 0;
+    border: none;
+    font-size: 0.8em;
+    i {
+      margin-right: 2px;
+      font-size: 1.4em;
+    }
+  }
+}
+
+/* COMMENT CONTENT */
+.comment-content {
+  margin-top: 20px;
+}
+
+/* CUSTOM CHECKBOX */
+.custom-checkbox {
+  display: block;
+  margin: 5px 0;
+}
+
+/* HR */
+hr {
+  margin: 50px auto;
+}
+
+/*
+ * SMALL
+ */
+@media only screen and (min-width: $small) {
+
+  /* UL ARTICLE */
+  ul {
+    article {
+      transition: $transition;
+      .col-avatar {
+        display: block;
+      }
+
+      /* AVATAR */
+      .avatar {
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+
+}
+
+/*
+ * TABLETS
+ */
+@media only screen and (min-width: $tablets) {
+
+  /* COMMENT META */
+  .comment-meta {
+    padding-bottom: 35px;
+
+    /* BUTTON */
+    button {
+      display: inline;
+      float: right;
+      font-size: 1em;
+      i {
+        margin-right: 5px;
+        font-size: 2em;
+      }
+    }
+  }
+
+}
+
+/*
+ * LARGE
+ */
+@media only screen and (min-width: $large) {
+
+  /* UL ARTICLE */
+  ul {
+
+    article {
+      &:hover {
+        background-color: #f9f9f9;
+        .comment-meta:after {
+          background-color: #ffffff;
+        }
+      }
+
+      /* AVATAR */
+      .avatar {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
+  /* COMMENT META */
+  .comment-meta {
+    button {
+      padding: 10px;
+    }
+  }
+
+}
+
+/*
+ * DESKTOPS
+ */
+@media only screen and (min-width: $desktop) {
+
+  /* UL ARTICLE */
+  ul {
+    article {
+      padding: 30px;
+    }
+  }
+
+}
+

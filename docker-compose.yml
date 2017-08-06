@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  web:
+    restart: always
+    image: pec/web
+    ports:
+      - "5001:4200"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50k"
+        max-file: "5"

@@ -1,0 +1,67 @@
+<!-- COMMENTS LENGTH -->
+<div class="commentsNb" [ngSwitch]="commentsNb">
+  <h3 *ngSwitchCase="0">Pas encore de petit mot !</h3>
+  <h3 *ngSwitchCase="1">1 petit mot</h3>
+  <h3 *ngSwitchDefault="">{{ commentsNb }} petits mots</h3>
+</div>
+<!-- END COMMENTS LENGTH -->
+
+<!-- COMMENTS -->
+<pec-comment-item (onGetParentId)="onGetParentId($event)" [comments]="comments" [type]="'parent'"></pec-comment-item>
+<!-- END COMMENTS -->
+
+<!-- COMMENT BOX -->
+<div class="comment-box" #commentBox>
+  <h3 *ngIf="!parentId && !authorName">Laisse un petit mot :-)</h3>
+  <h3 *ngIf="parentId && authorName">Répondre à <strong>{{authorName}}</strong>
+    <button (click)="removeResponseValues()" class="btn btn-transparent cancel-comment">Annuler</button>
+  </h3>
+  <form (ngSubmit)="addComment()" [formGroup]="commentForm" novalidate>
+    <div class="row">
+      <div class="col-md-4">
+        <input
+          #authorInput
+          class="input-default"
+          [ngClass]="'input-' + formErrors.author"
+          formControlName="author"
+          placeholder="Prénom *"
+          required>
+      </div>
+      <div class="col-md-4">
+        <input
+          class="input-default"
+          [ngClass]="'input-' + formErrors.authorEmail"
+          formControlName="authorEmail"
+          placeholder="Email *"
+          required>
+      </div>
+      <div class="col-md-4">
+        <input
+          #inputUrl
+          class="input-default"
+          [ngClass]="inputUrl.value ? 'input-' + formErrors.authorUrl : null"
+          formControlName="authorUrl"
+          placeholder="Site web">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <textarea
+          class="textarea-default"
+          [ngClass]="'textarea-' + formErrors.content"
+          formControlName="content"
+          placeholder="Ton message *"
+          required>
+        </textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <md-checkbox *ngIf="isBrowser" formControlName="notifications" class="custom-checkbox">M'avertir par mail en cas de réponse</md-checkbox>
+      </div>
+    </div>
+    <button [disabled]="commentDisabled" class="btn btn-block btn-blue send-button">Et Hop ! <i class="material-icons">send</i></button>
+  </form>
+</div>
+<!-- END COMMENT BOX -->
+

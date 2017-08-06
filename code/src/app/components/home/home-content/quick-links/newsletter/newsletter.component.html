@@ -1,0 +1,9 @@
+<form [formGroup]="emailForm">
+  <div class="wrapper">
+    <label for="newsletter">
+      <input #email id="newsletter" type="text"  placeholder="Ton email ici" formControlName="email" (keypress)="onKeyboardEnter($event)">
+      <i *ngIf="!emailForm.valid" class="material-icons newsletter-icon">email</i>
+      <i *ngIf="email.value && emailForm.valid" (click)="addEmail()" class="material-icons newsletter-icon newsletter-icon-success">send</i>
+    </label>
+  </div>
+</form>

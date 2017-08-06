@@ -1,0 +1,65 @@
+<!-- LAST RECIPES -->
+<pec-slides [recipes]="lastRecipes" [mainImg]="0" [title]="'Les dernières recettes'"></pec-slides>
+<!-- END LAST RECIPES -->
+
+<!-- PRESENTATION & SELECTION -->
+<div class="row main-widgets">
+
+  <!-- SELECTION CAROUSEL-->
+  <div class="col-lg-8 pec-selection" *ngIf="selection">
+    <div class="row main-widgets-titles">
+      <h4>En manque d'idées ?</h4>
+      <h5>{{selection.name}}</h5>
+    </div>
+    <div class="pec-selection-items">
+      <a *ngFor="let recipe of selection.recipes" class="pec-selection-item" [routerLink]="recipe | recipeUrl">
+        <img src="{{recipe.main_image.medium_size}}" alt="{{recipe.full_title}}">
+        <h6>{{recipe.full_title}}</h6>
+      </a>
+    </div>
+  </div>
+  <!-- END SELECTION CAROUSEL -->
+
+  <!-- PRESENTATION -->
+  <div class="col-lg-4 pec-presentation">
+    <div class="row main-widgets-titles">
+      <h4 class="hi-there">Hi there !</h4>
+    </div>
+    <div class="row">
+      <div class="presentation-picture whoareus">
+        <div class="group-titles">
+          <h5>Hello hello</h5>
+          <h6>Bienvenue sur Patate & Cornichon</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="presentation-picture icon-cta">
+        <a routerLink="/recettes">
+          <h6>Toutes nos recettes <i class="material-icons">chevron_right</i></h6>
+          <span routerLink="/recettes">
+            <i class="ri recipe-icon-burger"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- END PRESENTATION -->
+
+</div>
+<!-- END PRESENTATION & SELECTION -->
+
+<!-- RECIPES BY ... -->
+<pec-slides [recipes]="popularRecipes" [mainImg]="2" [title]="'Les stars'"></pec-slides>
+<pec-slides *ngIf="innerWidth >= 992" [recipes]="sucreRecipes" [mainImg]="0"
+            [title]="'Les recettes sucrées'"></pec-slides>
+<pec-slides *ngIf="innerWidth >= 992" [recipes]="saleRecipes" [mainImg]="2"
+            [title]="'Les recettes salées'"></pec-slides>
+<!-- END RECIPES BY ... -->
+
+<!-- MORE RECIPES -->
+<a class="more-recipes" routerLink="/recettes">
+  <div class="face-primary">J'en veux encore !</div>
+  <div class="face-secondary">Yummy !</div>
+</a>
+<!-- END MORE RECIPES -->

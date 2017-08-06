@@ -1,0 +1,5 @@
+<div class="main container">
+  <h1 *ngIf="query" class="main-title">Résultats pour "{{query}}"</h1>
+  <h1 *ngIf="!query" class="main-title">Résultats</h1>
+  <pec-recipes-list [query]="query"></pec-recipes-list>
+</div>

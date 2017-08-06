@@ -1,0 +1,42 @@
+@import '../../../../assets/scss/variables.scss';
+
+/* ICON */
+.icon {
+  margin-top: 20px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 55px;
+    height: 110px;
+    width: 110px;
+    border: 5px solid $primary-color;
+    color: rgba(229, 192, 20, 0.4);
+    border-radius: 50%;
+    animation:spin 4s linear infinite;
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+  }
+}
+
+p {
+  text-align: center;
+  line-height: 38px;
+  font-family: $pacifico;
+  font-size: 30px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/*
+ * SMALL
+ */
+@media only screen and (min-width: $small) {
+
+  p {
+    font-size: 40px;
+    padding: 10px 40px;
+  }
+
+}

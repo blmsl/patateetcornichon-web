@@ -1,0 +1,20 @@
+<div class="main container">
+  <h1 class="main-title">Les recettes</h1>
+
+  <!-- RECIPES CATEGORIES -->
+  <pec-recipes-categories
+    (changeToCategory)="changeToCategory($event)"
+    [categories]="categories"
+    [selectedCategory]="selectedCategory"
+    [selectedSubcategory]="selectedSubcategory">
+  </pec-recipes-categories>
+  <!-- END RECIPES CATEGORIES -->
+
+  <!-- RECIPES LIST -->
+  <pec-recipes-list
+    [categories]="categories"
+    [currentCategory]="currentCategory">
+  </pec-recipes-list>
+  <!-- END RECIPES LIST -->
+
+</div>

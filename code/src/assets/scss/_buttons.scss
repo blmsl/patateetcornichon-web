@@ -1,0 +1,85 @@
+@import "variables.scss";
+
+/* BTN */
+.btn {
+  color: inherit;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 10px;
+  font-size: 1rem;
+  transition: $transition;
+  text-transform: uppercase;
+  &:disabled {
+    opacity: 0.8;
+  }
+  i {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+
+/* BTN BLOCK */
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* BTN TRANSPARENT */
+.btn-transparent {
+  background-color: #fff;
+  margin-top: 15px;
+  border: 2px solid #f5f5f5;
+}
+
+/* BTN BLUE */
+.btn-blue {
+  color: #fff;
+  background-color: $secondary-color;
+  margin-top: 15px;
+}
+
+/* BTN ORANGE */
+.btn-orange {
+  color: #fff;
+  background-color: $primary-color;
+  margin-top: 15px;
+}
+
+/*
+ * DESKTOPS
+ */
+@media only screen and (min-width: $desktop) {
+
+  /* BTN TRANSPARENT */
+  .btn-transparent {
+    &:hover:enabled {
+      background-color: $secondary-color;
+      border: 2px solid $secondary-color;
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+  /* BTN BLUE */
+  .btn-blue {
+    &:hover:enabled {
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+  /* BTN ORANGE */
+  .btn-orange {
+    &:hover:enabled {
+      background-color: $secondary-color;
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+}

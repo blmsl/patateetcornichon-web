@@ -1,0 +1,246 @@
+@import "variables.scss";
+
+/* BODY */
+body {
+  font-family: $primary-font;
+  font-size: 16px;
+  line-height: $font-line-height;
+  font-weight: $font-weight;
+  color: $font-color;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: $transition;
+
+  &.mobile-navigation {
+    overflow: hidden;
+    &:after {
+      content: '';
+      background: #000000;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.4;
+      animation: addOverlay 0.45s;
+      @keyframes addOverlay {
+        from { opacity: 0}
+        to { opacity: 0.4}
+      }
+    }
+  }
+}
+
+/* HR */
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+  margin-bottom: 20px;
+}
+
+
+
+/* LINKS */
+a {
+  transition: all 0.4s ease;
+  text-decoration: none;
+  color: $primary-color;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/* NO OUTLINES */
+:focus {
+  outline: 0;
+}
+
+/* PLACEHOLDER */
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #d1d1d1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #d1d1d1;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #d1d1d1;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+}
+
+/* BACKGROUND IMAGE */
+.bg-img {
+  background-image: none;
+}
+
+/*
+ * PHONES
+ */
+/* MAIN CONTENT */
+.main {
+  h1.main-title {
+    text-align: center;
+    font-family: $secondary-font;
+    line-height: 60px;
+    font-weight: 400;
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
+}
+
+/* FADE IN */
+.fadeIn {
+  animation: fadein 0.5s;
+  @keyframes fadein {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+}
+
+/* COMMENT BOX, CONTACT BOX */
+.comment-box,
+.contact-box {
+  border: 5px solid #f9f9f9;
+  padding: 18px;
+
+  h3 {
+    background: #f9f9f9;
+    font-size: 21px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0;
+    padding: 20px;
+    line-height: 40px;
+  }
+
+  .cancel-comment {
+    display: block;
+    margin: auto;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  input {
+    margin-bottom: 20px;
+  }
+
+  .textarea-default {
+    margin-top: 0;
+  }
+
+  .send-button i {
+    margin-left: 15px;
+  }
+}
+
+/*
+ * TABLETS
+ */
+@media only screen and (min-width: $tablets) {
+  a:hover {
+    color: $secondary-color;
+  }
+
+  /* COMMENT BOX, CONTACT BOX */
+  .comment-box,
+  .contact-box {
+
+    h3 {
+      height: 80px;
+    }
+
+    .cancel-comment {
+      display: inline;
+      margin-left: 20px;
+    }
+
+    input {
+      margin-bottom: 0;
+    }
+
+    .textarea-default {
+      margin-top: 20px;
+    }
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    background: #FFF;
+    padding: 25px;
+    margin-top: 30px;
+
+    &.main-home {
+      margin-top: 80px;
+    }
+  }
+
+  /* BACKGROUND IMAGE */
+  .bg-img {
+
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(black, black);
+      opacity: 0.5;
+    }
+
+    &.homepage {
+      height: 650px;
+    }
+
+    &.all {
+      height: 250px;
+    }
+  }
+}
+
+/*
+ * LARGE
+ */
+@media only screen and (min-width: $large) {
+
+  /* MAIN CONTENT */
+  .main {
+    margin-top: 60px;
+
+    &.main-home {
+      margin-top: 160px;
+    }
+  }
+
+  /* BACKGROUND IMAGE */
+  .bg-img {
+
+    &.homepage {
+      height: 950px;
+    }
+
+    &.all {
+      height: 400px;
+    }
+  }
+
+}
+
+/*
+ * DESKTOPS
+ */
+@media only screen and (min-width: $desktop) {
+
+}

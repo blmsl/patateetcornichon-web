@@ -1,0 +1,41 @@
+<div class="container">
+
+  <pec-quotation></pec-quotation>
+
+  <!-- -FORM -->
+  <form (submit)="searchRecipes()">
+
+    <!-- INPUT & BUTTON-->
+    <input (focus)="display = 'visible'"
+           (blur)="display = 'hidden'"
+           [formControl]="searchInput"
+           (keyup)="onKeyboardEnter($event)"
+           class="search-bar"
+           placeholder="On mange quoi ce soir ?"><button type="submit" class="submit-search"><span class="text-button-search">Miam !</span></button>
+    <!-- END INPUT & BUTTON -->
+
+    <!-- SEARCH RESULT -->
+    <ul class="search-result" [@displayResults]="display">
+      <li *ngFor="let recipe of recipes">
+        <a [routerLink]="recipe | recipeUrl">
+          <div class="row results">
+            <div class="col-md-2">
+              <img [attr.src]="recipe.main_image.extra_small_size">
+            </div>
+            <div class="col-md-10">
+              <div class="title">{{recipe.full_title}}</div>
+              <div class="categories">
+                <span class="item" *ngFor="let category of recipe.categories">
+                  {{category.name}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <!-- END SEARCH RESULT -->
+
+  </form>
+  <!-- END FORM -->
+</div>

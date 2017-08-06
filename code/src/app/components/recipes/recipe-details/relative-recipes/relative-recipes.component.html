@@ -1,0 +1,24 @@
+<div class="relative-recipes">
+  <h3>Tu aimeras peut-être</h3>
+  <div class="row">
+    <div class="col-lg-4 recipe" *ngFor="let recipe of (recipes | async)">
+      <a [routerLink]="recipe | recipeUrl" class="item">
+        <div class="recipe-infos">
+          <h4>
+            <span class="upper-title">{{recipe.title}}</span> <span class="subtitle">{{recipe.sub_title}}</span>
+          </h4>
+          <span class="created-at">
+                <i class="material-icons">access_time</i> {{recipe.created_at | moment: 'humanize'}}
+          </span>
+        </div>
+        <img [attr.alt]="recipe.full_title" [attr.src]="recipe.main_image.medium_size">
+      </a>
+      <div class="recipe-meta">
+        <ul>
+          <li class="recipe-categories" *ngFor="let category of recipe.categories">{{category.name}}</li>
+        </ul>
+        <span class="comment-nb">{{recipe.comments_nb}}</span>
+      </div>
+    </div>
+  </div>
+</div>

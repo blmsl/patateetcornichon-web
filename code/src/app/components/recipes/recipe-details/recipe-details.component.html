@@ -1,0 +1,122 @@
+<div class="main container">
+  <md-spinner *ngIf="!recipe"></md-spinner>
+  <article *ngIf="recipe" itemscope itemtype="http://schema.org/Recipe">
+
+    <!-- TITLES -->
+    <h1 class="main-title" itemprop="name">{{recipe.full_title}}</h1>
+    <ul class="recipe-categories">
+      <li *ngFor="let category of (recipe.categories)">
+        {{category.name}}
+      </li>
+    </ul>
+    <!-- END TITLES -->
+
+    <!-- FEATURED IMAGE -->
+    <img itemprop="image" class="featured-image"
+         [attr.alt]="recipe.full_title"
+         [attr.src]="recipe.main_image.full_size" />
+    <!-- END FEATURED IMAGES -->
+
+    <!-- INTRODUCTION -->
+    <div class="row introduction">
+      <div class="col-md-12">
+        <p class="main-text" [innerHTML]="recipe.introduction | smiley | safe: 'html'"></p>
+      </div>
+    </div>
+    <!-- END INTRODUCTION -->
+
+    <!-- INGREDIENTS & RECIPE INFOS -->
+    <div class="row recipe-description">
+      <div class="col-xl-9 ingredients">
+        <h2 class="ingredients-icon">Ingrédients</h2>
+        <div class="list" [innerHTML]="recipe.ingredients | safe: 'html'"></div>
+      </div>
+      <div class="col-xl-3 meta">
+        <div class="recipe-infos">
+          <ul>
+            <li>
+              <img
+                [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1487156834/common/yield.png'
+                | cloudinary:'common':'w_18':'png'" />
+              <span itemprop="recipeYield">Pour : {{recipe.recipe_yield}}</span>
+            </li>
+            <li>
+              <img
+                [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1487156834/common/difficulty.png'
+                | cloudinary:'common':'w_18':'png'" />
+              Difficulté : {{recipe.difficulty | getDifficulty}}
+            </li>
+            <li>
+              <img
+                [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1487156834/common/preparation-time.png'
+                | cloudinary:'common':'w_18':'png'">
+              <time itemprop="prepTime">Préparation : {{recipe.preparation_time | minutesToHours}}</time>
+            </li>
+            <li *ngIf="recipe.cookingTime">
+              <img
+                [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1487156834/common/cooking-time.png'
+                | cloudinary:'common':'w_18':'png'">
+              <time itemprop="cookTime">Cuisson : {{recipe.cooking_time | minutesToHours}}</time>
+            </li>
+            <li *ngIf="recipe.fridgeTime">
+              <img
+                [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1487156834/common/fridge-time.png'
+                | cloudinary:'common':'w_18':'png'">
+              Frigo : {{recipe.fridge_time | minutesToHours}}
+            </li>
+            <li *ngIf="recipe.leavening_time">
+              <img
+                [attr.src]="'https://res.cloudinary.com/dte02b2iw/image/upload/v1487156834/common/leavening-time.png'
+                | cloudinary:'common':'w_18':'png'">
+              Pose : {{recipe.leavening_time | minutesToHours}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- END INGREDIENTS & RECIPE INFOS -->
+
+    <!-- PREPARATION -->
+    <div class="row">
+      <div class="col-md-9 preparation" itemprop="recipeInstructions">
+        <h2 class="preparation-icon">Préparation</h2>
+        <div class="steps" [innerHTML]="recipe.recipe_steps | smiley  | safe: 'html'"></div>
+      </div>
+      <div class="col-md-12">
+        <span class="bonapp">bon app'</span>
+      </div>
+    </div>
+    <!-- END PREPARATION -->
+
+    <!-- SECONDARY IMAGE -->
+    <img *ngIf="recipe.secondaryImg" class="featured-image"
+         [attr.alt]="recipe.full_title"
+         [attr.src]="recipe.secondary_image.full_size" />
+    <!-- END SECONDARY IMAGES -->
+
+    <hr>
+    <!-- SHARE BUTTONS -->
+    <div class="row share-buttons">
+      <div class="col-md-12">
+        <button class="btn facebook" (click)="openSocial('facebook')">Partager sur Facebook</button>
+        <button class="btn twitter" (click)="openSocial('twitter')">Partager sur Twitter</button>
+        <button class="btn pinterest" (click)="openSocial('pinterest')">Pin it!</button>
+      </div>
+    </div>
+    <!-- END SHARE BUTTONS -->
+
+    <hr>
+
+    <!-- RELATIVE RECIPES -->
+    <pec-relative-recipes [recipeSlug]="recipe.slug"></pec-relative-recipes>
+    <!-- END RELATIVE RECIPES -->
+
+    <hr>
+
+    <!-- COMMENTS -->
+    <pec-comments [recipeId]="recipe.id" [comments]="recipe.comments" [commentsNb]="recipe.comments_nb"></pec-comments>
+    <!-- END COMMENTS -->
+
+  </article>
+
+</div>

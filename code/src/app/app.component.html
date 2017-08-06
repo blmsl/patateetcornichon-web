@@ -1,0 +1,25 @@
+<div class="bg-img" [ngClass]="currentRoute === '/' ? 'homepage' : 'all'"
+     [style.background-image]="'url(' +
+   (currentRoute === '/' ?
+   (homeBackground ? (homeBackground?.picture.url | cloudinary:'backgrounds':'q_60,w_1920,f_auto':'jpg')  : '') :
+   (allBackground ? (allBackground?.picture.url | cloudinary:'backgrounds':'q_60,w_1920,f_auto':'jpg') : '')) + ')' | safe: 'style'">
+</div>
+<!-- END BACKGROUND IMAGE -->
+
+<!-- HEADER -->
+<pec-header [currentRoute]="currentRoute"
+            [categories]="categories"
+            [socialUrls]="socialUrls">
+</pec-header>
+<!-- END HEADER -->
+
+<!-- ROUTER -->
+<router-outlet></router-outlet>
+<!-- END ROUTER -->
+
+<!-- FOOTER -->
+<pec-footer [instagramMedias]="instagramMedia ? (instagramMedia | async) : null"
+            [socialUrls]="socialUrls"
+            [categories]="categories">
+</pec-footer>
+<!-- END FOOTER -->

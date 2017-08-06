@@ -1,0 +1,43 @@
+<nav [ngClass]="viewport === 'phone' ? 'phone-navigation' : 'full-navigation'"
+     [@navStateTranslate]="navState"
+     [@navStateOpacity]="navState">
+
+  <!-- PHONE NAV ICON -->
+  <i *ngIf="viewport === 'phone'"
+     (click)="changeNavState.emit()"
+     class="material-icons close-phone-navigation">
+    close
+  </i>
+  <!-- END PHONE NAV ICON -->
+
+  <!-- SOCIAL ICONS -->
+  <div class="social-icons-phone" *ngIf="viewport === 'phone'">
+    <a [attr.href]="socialUrls.facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+    <a [attr.href]="socialUrls.twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+    <a [attr.href]="socialUrls.instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+    <a [attr.href]="socialUrls.pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+    <a [attr.href]="socialUrls.googleplus" target="_blank"><i class="fa fa-google-plus"></i></a>
+    <a [attr.href]="socialUrls.youtube" target="_blank"><i class="fa fa-youtube-play"></i></a>
+  </div>
+  <!-- END SOCIAL ICONS -->
+
+  <!-- NAV LINKS -->
+  <ul (click)="changeNavState.emit()">
+    <li class="nav-logo">
+      <a routerLink="/"><img [attr.src]="defaultLogo" /></a>
+    </li>
+    <li>
+      <a class="recipe-nav dropdown" routerLink="/recettes" routerLinkActive="active">Recettes</a>
+      <ul class="submenu">
+        <li *ngFor="let category of categories">
+          <a *ngIf="!category.parentId" [routerLink]="['/recettes/categories', category.slug]">{{category.name}}</a>
+        </li>
+      </ul>
+    </li>
+    <li><a (click)="openDialog()">Voyages</a></li>
+    <li><a href="https://cours.patateetcornichon.fr">Cours</a></li>
+    <li><a routerLink="/qui-sommes-nous" routerLinkActive="active">Qui sommes-nous ?</a></li>
+  </ul>
+  <!-- END NAV LINKS -->
+
+</nav>

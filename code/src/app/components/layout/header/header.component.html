@@ -1,0 +1,80 @@
+<div class="container main-navigation">
+
+  <header [class.fixed]="navIsFixed">
+
+    <div class="header-nav">
+
+      <!-- NAV PHONE BUTTON -->
+      <i class="material-icons nav-phone-button" (click)="changeNavState('visible')">menu</i>
+      <!-- END NAV PHONE BUTTON -->
+
+      <!-- SOCIAL -->
+      <div class="header-social">
+        <ul class="list-social">
+          <li><a [href]="socialUrls.facebook" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a [href]="socialUrls.twitter" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a [href]="socialUrls.instagram" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          <li><a [href]="socialUrls.pinterest" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+          <li><a [href]="socialUrls.googleplus" class="google-plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+          <li><a [href]="socialUrls.youtube" class="youtube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+        </ul>
+      </div>
+      <!-- END SOCIAL -->
+
+      <!-- LOGO -->
+      <div class="header-logo">
+        <a routerLink="/">
+          <img class="main-logo" alt="Patate & Cornichon" [attr.src]="defaultLogo">
+        </a>
+      </div>
+      <!-- END LOGO -->
+
+      <!-- HEADER SEARCH-->
+      <div class="header-search">
+        <form>
+          <input
+            #search
+            title="Cherche ta recette !"
+            type="text"
+            [formControl]="searchInput"
+            (keyup)="onKeyboardEvent($event);"
+            (focus)="display = 'visible'"
+            (blur)="display = 'hidden'">
+          <i class="material-icons search-icon">search</i>
+          <ul class="search-result" [@displayResults]="display">
+            <li *ngFor="let recipe of recipes">
+              <a (click)="goToRecipe(recipe);">
+                {{recipe.full_title}}
+              </a>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <!-- END HEADER SEARCH -->
+    </div>
+
+    <!-- PHONE NAVIGATION -->
+    <pec-nav (changeNavState)="changeNavState('hidden')"
+             [socialUrls]="socialUrls"
+             [navState]="navState"
+             [viewport]="'phone'"
+             [categories]="categories">
+    </pec-nav>
+    <!-- END PHONE NAVIGATION -->
+
+
+    <!-- NAVIGATION -->
+    <pec-nav [defaultLogo]="defaultLogo"
+             [categories]="categories">
+    </pec-nav>
+    <!-- END NAVIGATION -->
+
+  </header>
+
+  <!-- TO TOP BUTTON -->
+  <span class="toTop" (click)="scrollToTop()" [ngStyle]="{'opacity': toTopButtonDisplay}">
+    <i class="material-icons">expand_less</i>
+  </span>
+  <!-- END TO TOP BUTTON -->
+
+</div>
