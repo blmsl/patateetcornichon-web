@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Meta, Title } from "@angular/platform-browser";
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'pec-home',
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     this.meta.updateTag({
       name: 'description',
       content: 'Le site de recettes vegans pour les grosses feignasses.'
-    })
+    });
   }
 
 }
