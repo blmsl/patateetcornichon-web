@@ -40,3 +40,4 @@ code/e2e/*.map
 # System Files
 .DS_Store
 Thumbs.db
+/code/dist-server/

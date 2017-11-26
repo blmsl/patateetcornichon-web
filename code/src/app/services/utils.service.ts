@@ -1,25 +1,12 @@
-import { Injectable } from '@angular/core';
-import { CONFIG } from '../app.config';
-import {Router} from "@angular/router";
-import {MdSnackBar, MdSnackBarConfig} from "@angular/material";
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 
 @Injectable()
 export class UtilsService {
 
   constructor(private _router: Router,
-              private _snackBar: MdSnackBar) {
-  }
-
-  /**
-   * Get the Cloudinary URL with params
-   * @param type
-   * @param publicId
-   * @param params
-   * @param format
-   * @returns {string}
-   */
-  public cloudinaryUrl(type: string, publicId: string, params: string, format: string) {
-    return `${CONFIG.cloudinaryUrl}/${type}/upload/${params}/${publicId}.${format}`
+              private _snackBar: MatSnackBar) {
   }
 
   /**
@@ -42,10 +29,10 @@ export class UtilsService {
    * Create the SnackBar
    * @param result
    * @param message
-   * @returns {MdSnackBarRef<SimpleSnackBar>}
+   * @returns {MatSnackBarRef<SimpleSnackBar>}
    */
   public snackBar(result: string, message: string) {
-    let config = new MdSnackBarConfig();
+    const config = new MatSnackBarConfig();
 
     // Success message
     if (result === 'success') {

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { CONFIG } from '../app.config';
+import {Injectable} from '@angular/core';
+import {CONFIG} from '../app.config';
 import 'rxjs/add/operator/map';
-import {Observable} from "rxjs";
-import {Recipe} from "../interfaces/recipe.interface";
-import {Comment} from "../interfaces/comment.interface";
-import {Category} from "../interfaces/category.interface";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from 'rxjs/Observable';
+import {Recipe} from '../interfaces/recipe.interface';
+import {Comment} from '../interfaces/comment.interface';
+import {Category} from '../interfaces/category.interface';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class RecipesService {
@@ -18,7 +18,7 @@ export class RecipesService {
    * @returns Observable<Recipe[]>
    */
   public getSelection(): Observable<any> {
-    return this.http.get(`${CONFIG.apiRoot}/junk-food/recipes/selection`);
+    return this.http.get(`${CONFIG.apiRoot}/junk-food/recipes/selection/`);
   }
 
   /**
@@ -27,9 +27,9 @@ export class RecipesService {
    * @param offset
    * @returns {Observable<Recipe[]>}
    */
-  public getLastRecipes(limit: number = 7, offset: number = 0): Observable<Recipe[]> {
+  public getLastRecipes(limit: number = 7, offset: number = 0): Observable<any> {
     return this.http.get(
-      `${CONFIG.apiRoot}/junk-food/recipes?limit=${limit}&offset=${offset}`);
+      `${CONFIG.apiRoot}/junk-food/recipes/?limit=${limit}&offset=${offset}`);
   }
 
   /**
@@ -38,7 +38,7 @@ export class RecipesService {
    * @param offset
    * @returns {Observable<Recipe[]>}
    */
-  public getPopularRecipes(limit: number = 7, offset: number = 0): Observable<Recipe[]> {
+  public getPopularRecipes(limit: number = 7, offset: number = 0): Observable<any> {
     return this.http.get(`${CONFIG.apiRoot}/junk-food/recipes/?order=-views&offset=${offset}&limit=${limit}`);
   }
 
@@ -50,9 +50,9 @@ export class RecipesService {
    * @param limit
    * @returns Observable<Recipe[]>
    */
-  public getRecipesByCategory(slug: string, random=false, offset: number = 0, limit?:number): Observable<Recipe[]> {
+  public getRecipesByCategory(slug: string, random = false, offset: number = 0, limit?: number): Observable<any> {
     return this.http.get(
-      `${CONFIG.apiRoot}/junk-food/recipes?category=${slug}&random=${random}&offset=${offset}${limit ? ('&limit=' + limit) : null}`
+      `${CONFIG.apiRoot}/junk-food/recipes/?category=${slug}&random=${random}&offset=${offset}${limit ? ('&limit=' + limit) : null}`
     );
   }
 
@@ -61,9 +61,9 @@ export class RecipesService {
    * @param slug
    * @returns Observable<Recipe>
    */
-  public getRecipe(slug: string): Observable<Recipe> {
+  public getRecipe(slug: string): Observable<any> {
     return this.http.get(
-      `${CONFIG.apiRoot}/junk-food/recipes/${slug}`);
+      `${CONFIG.apiRoot}/junk-food/recipes/${slug}/`);
   }
 
   /**
@@ -73,8 +73,8 @@ export class RecipesService {
    * @param limit
    * @returns Observable<Recipe[]>
    */
-  public searchRecipe(value: string = '', offset: number = 0, limit: number = 5): Observable<Recipe[]> {
-    let lowercase = value.toLowerCase();
+  public searchRecipe(value: string = '', offset: number = 0, limit: number = 5): Observable<any> {
+    const lowercase = value.toLowerCase();
 
     return this.http.get(
       `${CONFIG.apiRoot}/junk-food/recipes/?s=${lowercase}&order=-created_at&limit=${limit}&offset=${offset}`
@@ -86,13 +86,13 @@ export class RecipesService {
    * @param comment
    * @returns Observable<Comment>
    */
-  public addComment(comment: Comment): Observable<Comment> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+  public addComment(comment: Comment): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.http.post(`${CONFIG.apiRoot}/junk-food/comments/`, comment, { headers: headers });
+    return this.http.post(`${CONFIG.apiRoot}/junk-food/comments/`, comment, {headers: headers});
   }
 
-  public addView(slug: string): Observable<number> {
+  public addView(slug: string): Observable<any> {
     return this.http.post(`${CONFIG.apiRoot}/junk-food/recipes/${slug}/add-view/`, null);
   }
 
@@ -100,8 +100,8 @@ export class RecipesService {
    * Get Favorite Comments
    * @returns Observable<Comment[]>
    */
-  public getFavoriteComments(): Observable<Comment[]> {
-    return this.http.get(`${CONFIG.apiRoot}/junk-food/comments?favorite=true&limit=3`);
+  public getFavoriteComments(): Observable<any> {
+    return this.http.get(`${CONFIG.apiRoot}/junk-food/comments/?favorite=true&limit=3`);
   }
 
   /**
@@ -110,19 +110,17 @@ export class RecipesService {
    * @param limit
    * @returns Observable<Recipe[]>
    */
-  public getRelativeRecipes(slug: string, limit: number = 3): Observable<Recipe[]> {
-    return this.http.get(`${CONFIG.apiRoot}/junk-food/recipes/${slug}/relative?limit=${limit}`);
+  public getRelativeRecipes(slug: string, limit: number = 3): Observable<any> {
+    return this.http.get(`${CONFIG.apiRoot}/junk-food/recipes/${slug}/relative/?limit=${limit}`);
   }
 
   /**
    * Get all the categories
    * @returns Observable<Category[]>
    */
-  public getCategories(): Observable<Category[]> {
+  public getCategories(): Observable<any> {
     return this.http.get(
-      `${CONFIG.apiRoot}/junk-food/categories`
+      `${CONFIG.apiRoot}/junk-food/categories/`
     );
   }
-
-
 }

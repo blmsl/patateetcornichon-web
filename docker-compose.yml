@@ -4,8 +4,9 @@ services:
   web:
     restart: always
     image: pec/web
+    container_name: pec_web
     ports:
-      - "5001:4200"
+      - "8001:3000"
     logging:
       driver: "json-file"
       options:

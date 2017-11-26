@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import {Category} from "../../../../interfaces/category.interface";
 import {NavAnimations} from "./nav.animations";
-import {MdDialog, MdDialogConfig} from "@angular/material";
+import {MatDialog, MatDialogConfig} from "@angular/material";
 import {SoonComponent} from "../../../extra/soon/soon.component";
 
 @Component({
@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
 
   @Output() changeNavState: EventEmitter<any> = new EventEmitter();
 
-  constructor(private _dialog: MdDialog) { }
+  constructor(private _dialog: MatDialog) { }
 
   ngOnInit() {
   }

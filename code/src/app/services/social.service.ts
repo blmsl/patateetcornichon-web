@@ -1,17 +1,16 @@
-import {Observable} from "rxjs";
-import {InstaMedia} from "../interfaces/instaMedia.interface";
-import {CONFIG} from "../app.config";
+import {Observable} from 'rxjs/Observable';
+import {CONFIG} from '../app.config';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
 interface Socials {
-  facebook: string,
-  twitter: string,
-  instagram: string,
-  pinterest: string,
-  googleplus: string,
-  youtube: string,
+  facebook: string;
+  twitter: string;
+  instagram: string;
+  pinterest: string;
+  googleplus: string;
+  youtube: string;
 }
 
 @Injectable()
@@ -28,10 +27,10 @@ export class SocialService {
       pinterest: 'https://www.pinterest.com/hellopatateetco',
       googleplus: 'https://plus.google.com/+PatateetcornichonFr-cooking',
       youtube: 'https://www.youtube.com/c/PatateetcornichonFr-cooking'
-    }
+    };
   }
 
-  public getInstagramMedias(count?: number): Observable<InstaMedia[]> {
+  public getInstagramMedias(count?: number): Observable<any> {
     return this.http.get(`${CONFIG.apiRoot}/core/instagram/${count ? '?count=' + count : ''}`);
   }
 
@@ -59,12 +58,11 @@ export class SocialService {
     }
   }
 
-  public addToMailchimp(email: string): Observable<{id: number}> {
+  public addToMailchimp(email: string): Observable<any> {
     const subscriber = {
       email: email
     };
     return this.http.post(
       `${CONFIG.apiRoot}/core/mailchimp/`, subscriber);
   }
-
 }

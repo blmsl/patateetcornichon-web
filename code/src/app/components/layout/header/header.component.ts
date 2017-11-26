@@ -46,10 +46,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     /**
-     * Get the default logo from Cloudinary
+     * Get the default logo from CDN
      * @type {string}
      */
-    this.defaultLogo = CONFIG.CDNRoot + '/patate-et-cornichon-logo.svg';
+    this.defaultLogo = CONFIG.CDNRoot + '/assets/patate-et-cornichon-logo.svg';
 
     /**
      * Search Input
@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
    */
   @HostListener('window:scroll')
   onWindowScroll() {
-    let scrollPosition = this._document.documentElement.scrollTop || this._document.body.scrollTop;
+    const scrollPosition = this._document.documentElement.scrollTop || this._document.body.scrollTop;
     if (scrollPosition > 400) {
       this.navIsFixed = true;
       this.toTopButtonDisplay = 1;

@@ -67,12 +67,11 @@
 }
 
 /* CUSTOM SPINNER */
-.mat-spinner {
+.mat-progress-spinner, .mat-spinner {
   margin: auto;
-  path {
+  circle {
     stroke: $primary-color;
   }
 }
-
 
 

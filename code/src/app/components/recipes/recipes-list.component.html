@@ -1,13 +1,13 @@
-<md-spinner *ngIf="!recipes"></md-spinner>
+<mat-spinner *ngIf="!recipes"></mat-spinner>
 <p *ngIf="recipes?.length === 0" class="no-result fadeIn">Oups ! Aucun résultat</p>
 
 <div class="recipes-list" *ngIf="recipes?.length > 0">
-    <md-card class="single fadeIn" *ngFor="let recipe of recipes">
+    <mat-card class="single fadeIn" *ngFor="let recipe of recipes">
       <a [routerLink]="recipe | recipeUrl">
         <div class="featured-image">
-          <img [attr.alt]="recipe.full_title"  md-card-image [attr.src]="recipe.main_image.medium_size">
+          <img [attr.alt]="recipe.full_title"  mat-card-image [attr.src]="recipe.main_image.medium_size">
         </div>
-        <md-card-content>
+        <mat-card-content>
           <h2>{{recipe.full_title}}</h2>
           <span class="created-at">
             <i class="material-icons">access_time</i> {{recipe.created_at | moment: 'humanize'}}
@@ -27,9 +27,9 @@
             </div>
           </div>
           <p>{{recipe.introduction | escape | truncate: 250}}</p>
-        </md-card-content>
+        </mat-card-content>
       </a>
-    </md-card>
+    </mat-card>
 </div>
-<md-spinner *ngIf="pending"></md-spinner>
+<mat-spinner *ngIf="pending"></mat-spinner>
 <button class="more-recipes" *ngIf="moreRecipes && !pending" (click)="addMoreRecipes()"></button>

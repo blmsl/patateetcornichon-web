@@ -1,10 +1,10 @@
-import { WebPecPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('web-pec App', () => {
-  let page: WebPecPage;
+describe('patateetcornichon-web App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new WebPecPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {

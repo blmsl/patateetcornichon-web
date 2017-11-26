@@ -6,8 +6,13 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import {MdCheckboxModule, MdDialogModule, MdProgressSpinnerModule} from "@angular/material";
-import {MdCardModule, MdSnackBarModule} from '@angular/material';
+import {
+  MatCheckboxModule,
+  MatDialogModule,
+  MatProgressSpinnerModule,
+  MatCardModule,
+  MatSnackBarModule
+} from '@angular/material';
 
 /**
  * Routes
@@ -105,11 +110,11 @@ import {NewsletterComponent} from './components/home/home-content/quick-links/ne
       appId: 'web-pec'
     }),
     ReactiveFormsModule,
-    MdCardModule,
-    MdSnackBarModule,
-    MdDialogModule,
-    MdCheckboxModule,
-    MdProgressSpinnerModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES)

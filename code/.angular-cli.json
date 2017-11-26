@@ -29,6 +29,33 @@
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
+    },
+    {
+      "name": "universal",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "polyfills": "polyfills.ts",
+      "platform": "server",
+      "root": "src",
+      "outDir": "dist-server",
+      "main": "main.server.ts",
+      "tsconfig": "tsconfig.server.json",
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "test": "test.ts",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.scss"
+      ],
+      "scripts": [
+        "../node_modules/smoothscroll-polyfill/dist/smoothscroll.js"
+      ]
     }
   ],
   "e2e": {

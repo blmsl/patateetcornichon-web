@@ -1,20 +1,18 @@
-import { Injectable } from '@angular/core';
-import {Http, Headers, RequestOptions} from "@angular/http";
-import {CONFIG} from "../app.config";
-import {Contact} from "../interfaces/contact.interface";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {CONFIG} from '../app.config';
+import {Contact} from '../interfaces/contact.interface';
 
 @Injectable()
 export class ContactService {
 
-  constructor(private _http: Http) {
+  constructor(private _http: HttpClient) {
   }
 
   sendMessage(contact: Contact) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this._http.post(`${CONFIG.apiRoot}/contact`, contact, options)
-      .map(res => res.json());
+    return this._http.post(`${CONFIG.apiRoot}/contact/`, contact, {headers});
   }
 
 }

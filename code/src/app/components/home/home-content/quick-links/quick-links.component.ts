@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {SoonComponent} from "../../../extra/soon/soon.component";
 import { SocialService } from '../../../../services/social.service';
 
@@ -12,7 +12,7 @@ export class QuickLinksComponent implements OnInit {
 
   instagram: string;
 
-  constructor(private _dialog: MdDialog,
+  constructor(private _dialog: MatDialog,
               private socialService: SocialService) {
   }
 

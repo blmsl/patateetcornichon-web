@@ -4,9 +4,9 @@ RUN mkdir /code
 WORKDIR /code
 
 COPY code/package.json .
-RUN yarn
+RUN npm i
 
 COPY code/ .
-EXPOSE 4200
+EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "universal"]

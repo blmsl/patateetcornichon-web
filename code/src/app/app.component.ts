@@ -1,14 +1,16 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {Router, NavigationEnd} from "@angular/router";
-import {Category} from "./interfaces/category.interface";
-import {SocialService} from "./services/social.service";
-import {InstaMedia} from "./interfaces/instaMedia.interface";
-import {Observable} from "rxjs";
-import {RecipesService} from "./services/recipes.service";
+import {Component, OnInit, Inject, AfterContentChecked} from '@angular/core';
+import {Router, NavigationEnd} from '@angular/router';
+import {Category} from './interfaces/category.interface';
+import {SocialService} from './services/social.service';
+import {InstaMedia} from './interfaces/instaMedia.interface';
+import {Observable} from 'rxjs/Observable';
+import {RecipesService} from './services/recipes.service';
 import 'rxjs/add/operator/filter';
-import {LocationStrategy} from "@angular/common";
+import {LocationStrategy} from '@angular/common';
 import {PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
+import {backgrounds} from './app.backgrounds';
+import {QuotationService} from './components/home/search-bar/quotation.component';
 
 declare const ga: Function;
 
@@ -16,9 +18,10 @@ declare const ga: Function;
   selector: 'pec-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterContentChecked {
 
   currentRoute: string;
+  homeBackgroundAndQuotation: any;
   homeBackground: any;
   allBackground: any;
   socialUrls: Object;
@@ -33,10 +36,18 @@ export class AppComponent implements OnInit {
               private recipesService: RecipesService,
               private socialService: SocialService,
               private router: Router,
+              private quotationService: QuotationService,
               @Inject(PLATFORM_ID) private platformId: Object) {
   }
 
   ngOnInit(): void {
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.homeBackgroundAndQuotation = backgrounds.homepage;
+      this.homeBackground = this.homeBackgroundAndQuotation.url;
+      this.allBackground = backgrounds.all;
+    }
+
 
     /**
      * Get Categories
@@ -46,18 +57,18 @@ export class AppComponent implements OnInit {
       .subscribe(categories => this.categories = categories);
 
     /**
-     * Get Social Links
-     * @type {Socials}
-     */
-    this.socialUrls = this.socialService.getSocialUrls();
-
-    /**
      * Get Instagram Medias
      * @type Observable<InstaMedia[]>
      */
     if (isPlatformBrowser(this.platformId)) {
       this.instagramMedia = this.socialService.getInstagramMedias(9);
     }
+
+    /**
+     * Get Social Links
+     * @type {Socials}
+     */
+    this.socialUrls = this.socialService.getSocialUrls();
 
     /**
      * Get Current Route
@@ -76,5 +87,10 @@ export class AppComponent implements OnInit {
         if (isPlatformBrowser(this.platformId)) window.scrollTo(0, 0);
       });
   }
-}
 
+  ngAfterContentChecked(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.quotationService.setQuotation(this.homeBackgroundAndQuotation.quotation);
+    }
+  }
+}
