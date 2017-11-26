@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "universal": "ng build --prod && ng build --prod --app universal --output-hashing=none && node server.js",
+    "universal": "ng build --prod && ng build --prod --app universal --output-hashing=none",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",

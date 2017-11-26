@@ -1,6 +1,8 @@
 import {environment} from '../environments/environment';
 
+const {apiRoot, CDNRoot} = environment;
+
 export const CONFIG = {
-  apiRoot: environment.apiRoot,
-  CDNRoot: environment.CDNRoot
+  apiRoot,
+  CDNRoot
 };

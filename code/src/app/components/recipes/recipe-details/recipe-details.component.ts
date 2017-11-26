@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit, Inject, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {RecipesService} from '../../../services/recipes.service';
 import 'rxjs/add/operator/publishReplay';
@@ -17,7 +17,7 @@ const RECIPE_KEY = makeStateKey('recipe');
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.scss']
 })
-export class RecipeDetailsComponent implements OnInit {
+export class RecipeDetailsComponent implements OnInit, OnDestroy {
 
   recipe: any;
   currentURL: string;
@@ -38,6 +38,7 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit(): void {
     if (this.state.hasKey(RECIPE_KEY)) {
       this.recipe = this.state.get(RECIPE_KEY, null);
+      this.addView(this.recipe.slug);
     } else {
       this.fetchRecipe();
     }
@@ -51,11 +52,6 @@ export class RecipeDetailsComponent implements OnInit {
           recipe => {
             this.recipe = recipe;
             this.state.set(RECIPE_KEY, recipe);
-
-            /**
-             * Add a view
-             */
-            this.addView(recipe.slug);
 
             /**
              * Set Meta tags
@@ -79,7 +75,8 @@ export class RecipeDetailsComponent implements OnInit {
               {property: 'twitter:site', content: '@PeC_cooking'},
               {property: 'twitter:creator', content: '@PeC_cooking'}
             ]);
-          }
+          },
+          err => this.utilsService.redirectIf404()
         );
     });
   }
@@ -92,5 +89,9 @@ export class RecipeDetailsComponent implements OnInit {
 
   openSocial(social: string): void {
     this.social.shareOn(social, this.currentURL);
+  }
+
+  ngOnDestroy() {
+    this.state.remove(RECIPE_KEY);
   }
 }

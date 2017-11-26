@@ -1,7 +1,6 @@
-import {environment} from '../environments/environment';
+import {CONFIG} from './app.config';
 
-
-const backgroundsUrl = environment.CDNRoot + '/assets/backgrounds/';
+const backgroundsUrl = CONFIG.CDNRoot + '/assets/backgrounds/';
 
 const backgroundsList = {
   homepage: [

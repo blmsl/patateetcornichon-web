@@ -41,3 +41,4 @@ code/e2e/*.map
 .DS_Store
 Thumbs.db
 /code/dist-server/
+/code/package-lock.json
