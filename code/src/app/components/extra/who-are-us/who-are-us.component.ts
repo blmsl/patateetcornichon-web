@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 
 @Component({
@@ -8,10 +8,10 @@ import {Title} from "@angular/platform-browser";
 })
 export class WhoAreUsComponent implements OnInit {
 
-  constructor(private _titleService: Title) { }
+  constructor(private _titleService: Title) {
+  }
 
   ngOnInit() {
     this._titleService.setTitle('Qui sommes-nous ? | Patate & Cornichon');
   }
-
 }

@@ -12,7 +12,7 @@ export class ContactService {
   sendMessage(contact: Contact) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this._http.post(`${CONFIG.apiRoot}/contact/`, contact, {headers});
+    return this._http.post(`${CONFIG.apiRoot}/core/contact/`, contact, {headers});
   }
 
 }

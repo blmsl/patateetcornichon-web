@@ -1,0 +1,25 @@
+.contact-us {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .contact-icon {
+    display: none;
+  }
+
+  p {
+    font-size: 1.5em;
+    padding-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .contact-us {
+    .contact-icon {
+      display: block;
+      height: 100px;
+      width: 100px;
+    }
+  }
+}
+

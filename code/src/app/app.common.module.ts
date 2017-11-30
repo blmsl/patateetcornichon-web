@@ -61,7 +61,8 @@ import {RelativeRecipesComponent} from './components/recipes/recipe-details/rela
 import {NotFoundComponent} from './components/extra/not-found/not-found.component';
 import {SearchResultsComponent} from './components/extra/search-results/search-results.component';
 import {WhoAreUsComponent} from './components/extra/who-are-us/who-are-us.component';
-import {ContactFormComponent} from './components/extra/who-are-us/contact-form/contact-form.component';
+import {ContactComponent} from './components/extra/contact/contact.component';
+import {ContactFormComponent} from './components/extra/contact/contact-form/contact-form.component';
 import {LegalNoticeComponent} from './components/extra/legal-notice/legal-notice.component';
 import {HeaderComponent} from './components/layout/header/header.component';
 import {SoonComponent} from './components/extra/soon/soon.component';
@@ -97,6 +98,7 @@ import {NewsletterComponent} from './components/home/home-content/quick-links/ne
     NotFoundComponent,
     SearchResultsComponent,
     WhoAreUsComponent,
+    ContactComponent,
     ContactFormComponent,
     LegalNoticeComponent,
     QuotationComponent,
