@@ -1,51 +1,67 @@
-/* Main colors */
-/* Animations */
-/* Images */
+@import '../../../../assets/scss/variables.scss';
+
 /*
  * PHONES
  */
+
 /* H2 */
 :host /deep/ h2 {
-  display: none; }
+  display: none;
+}
 
 /* FORM */
 form {
   position: relative;
   width: 100%;
   margin: 30px auto 0 auto;
+
   /* SEARCH-RESULT */
-  /* SEARCH BAR */ }
-  form .search-result {
-    display: none; }
-  form .search-bar {
+  .search-result {
+    display: none;
+  }
+
+  /* SEARCH BAR */
+  .search-bar {
     height: 60px;
     vertical-align: middle;
     border: none;
     background-color: #f5f5f5;
     padding: 0 20px;
     font-size: 15px;
-    width: 80%; }
-  form button.submit-search {
+    width: 80%;
+
+  }
+  button.submit-search {
     vertical-align: middle;
     color: white;
     width: 20%;
     height: 60px;
     border: none;
-    background-color: #e5c014; }
-    form button.submit-search .text-button-search {
-      display: none; }
-    form button.submit-search:before {
+    background-color: $primary-color;
+
+    .text-button-search {
+      display: none;
+    }
+
+    &:before {
       content: "\e8b6";
-      font-family: "Material Icons", cursive;
+      font-family: $material-icons;
       vertical-align: middle;
-      font-size: 35px; }
+      font-size: 35px;
+    }
+
+  }
+}
 
 /*
  * TABLETS
  */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $tablets) {
+
   :host .container {
-    box-sizing: content-box; }
+    box-sizing: content-box;
+  }
+
   /* H2 */
   :host /deep/ h2 {
     display: block;
@@ -55,17 +71,19 @@ form {
     padding: 10px 0;
     font-size: 50px;
     line-height: 45px;
-    font-family: "Amatic SC", cursive;
-    font-weight: 300; }
+    font-family: $secondary-font;
+    font-weight: 300;
+  }
+
   /* FORM */
   form {
     position: relative;
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
+
     /* SEARCH-RESULT */
-    /* SEARCH BAR */ }
-    form .search-result {
+    .search-result {
       display: block;
       list-style: none;
       padding-left: 0;
@@ -75,46 +93,62 @@ form {
       width: 100%;
       z-index: 2;
       background-color: #ffffff;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
-      form .search-result li {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2);
+      li {
         height: 70px;
         border-top: 1px solid #f5f5f5;
-        transition: 0.3s; }
-        form .search-result li:hover {
-          background-color: #172349;
-          border-top: 1px solid #172349; }
-          form .search-result li:hover a {
-            color: #e5c014; }
-            form .search-result li:hover a .results .item {
-              color: #f5f5f5; }
-        form .search-result li a {
+        transition: $transition;
+        &:hover {
+          background-color: $secondary-color;
+          border-top: 1px solid $secondary-color;
+          a {
+            color: $primary-color;
+
+            .results .item {
+              color: #f5f5f5;
+            }
+          }
+        }
+        a {
           display: block;
           width: 100%;
           color: inherit;
-          height: 70px; }
-          form .search-result li a .results {
+          height: 70px;
+
+          .results {
             display: flex;
             align-items: center;
-            height: 70px; }
-            form .search-result li a .results .item {
-              transition: 0.3s;
+            height: 70px;
+
+            .item {
+              transition: $transition;
               font-size: 12px;
-              color: rgba(0, 0, 0, 0.5);
-              text-transform: uppercase; }
-              form .search-result li a .results .item:not(:last-child):after {
-                content: '-'; }
-        form .search-result li img {
+              color: rgba(0,0,0,0.5);
+              text-transform: uppercase;
+              &:not(:last-child):after {
+                content: '-'
+              }
+            }
+          }
+        }
+        img {
           margin-left: 20px;
-          vertical-align: middle; }
-    form .search-bar {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    /* SEARCH BAR */
+    .search-bar {
       height: 60px;
       vertical-align: middle;
       border: none;
       background-color: #ffffff;
       padding: 0 20px;
       font-size: 20px;
-      width: 580px; }
-    form button.submit-search {
+      width: 580px;
+    }
+    button.submit-search {
       vertical-align: middle;
       font-size: 20px;
       color: white;
@@ -122,26 +156,39 @@ form {
       width: 140px;
       height: 60px;
       border: none;
-      background-color: #e5c014;
-      transition: 0.3s; }
-      form button.submit-search .text-button-search {
-        display: inline; }
-      form button.submit-search:before {
+      background-color: $primary-color;
+      transition: $transition;
+
+      .text-button-search {
+        display: inline;
+      }
+
+      &:before {
         content: "\e8b6";
-        font-family: "Material Icons", cursive;
+        font-family: $material-icons;
         margin-right: 5px;
         vertical-align: middle;
-        font-size: 24px; }
-      form button.submit-search:hover {
-        background-color: #172349;
-        cursor: pointer; } }
+        font-size: 24px;
+      }
+
+      &:hover {
+        background-color: $secondary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
 
 /*
  * LARGE
  */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: $large) {
+
   :host .container {
-    box-sizing: border-box; }
+    box-sizing: border-box;
+  }
+
   /* H2 */
   :host /deep/ h2 {
     display: block;
@@ -151,17 +198,31 @@ form {
     padding: 80px 0;
     font-size: 70px;
     line-height: 45px;
-    font-family: "Amatic SC", cursive;
-    font-weight: 300; }
+    font-family: $secondary-font;
+    font-weight: 300;
+  }
+
   /* FORM */
   form {
     width: 680px;
-    /* SEARCH BAR */ }
-    form .search-bar {
-      width: 540px; }
-    form button.submit-search {
-      width: 140px; } }
+
+    /* SEARCH BAR */
+    .search-bar {
+      width: 540px;
+    }
+    button.submit-search {
+      width: 140px;
+    }
+  }
+
+
+
+}
+
 
 /*
  * DESKTOPS
  */
+@media only screen and (min-width: $desktop) {
+
+}

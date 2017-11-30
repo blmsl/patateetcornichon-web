@@ -1,61 +1,71 @@
-/* Main colors */
-/* Animations */
-/* Images */
+@import '../../../../../assets/scss/variables.scss';
+
 /*
  * PHONES
  */
 .quick-links {
-  display: none; }
+  display: none;
+}
+
 
 /*
  * TABLETS
  */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: $tablets) {
+
   /* QUICK LINKS */
   .quick-links {
     display: block;
     padding-left: 0;
-    padding-right: 0; }
+    padding-right: 0;
+  }
+
   /* EACH ITEM */
   .item {
     height: 195px;
-    /* NEWSLETTER */
-    /* INSTAGRAM AND TRAVELS */ }
-    .item.insta-item {
-      display: none; }
-    .item .item-content {
+
+    &.insta-item {
+      display: none;
+    }
+
+    .item-content {
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center; }
-    .item /deep/ .newsletter {
-      background-color: #172349; }
-      .item /deep/ .newsletter h3 {
+      align-items: center;
+    }
+
+    /* NEWSLETTER */
+    /deep/ .newsletter {
+      background-color: $secondary-color;
+      h3 {
         display: block;
         margin: auto;
         text-align: center;
         color: #ffffff;
-        font-family: "Amatic SC", cursive;
+        font-family: $secondary-font;
         font-weight: 300;
         line-height: 30px;
         font-size: 34px;
         margin: 0;
-        max-width: 200px; }
-      .item /deep/ .newsletter form {
+        max-width: 200px;
+      }
+      form {
         margin: auto;
         padding-top: 25px;
-        width: 100%; }
-        .item /deep/ .newsletter form .wrapper {
+        width: 100%;
+        .wrapper {
           position: relative;
-          width: 100%;
-          margin: 0 auto; }
-        .item /deep/ .newsletter form label {
+          width: 100%;;
+          margin: 0 auto;
+        }
+        label {
           width: 100%;
           height: 100%;
           display: block;
-          position: relative; }
-          .item /deep/ .newsletter form label input {
+          position: relative;
+          input {
             width: 100%;
             height: 50px;
             background-color: #ffffff;
@@ -63,27 +73,38 @@
             padding-left: 15px;
             padding-right: 50px;
             border-radius: 3px;
-            font-size: 16px; }
-          .item /deep/ .newsletter form label .newsletter-icon {
+            font-size: 16px;
+          }
+          .newsletter-icon {
             position: absolute;
-            color: #e5c014;
+            color: $primary-color;
             right: 15px;
             font-size: 25px;
-            top: 12px; }
-            .item /deep/ .newsletter form label .newsletter-icon.newsletter-icon-success {
+            top: 12px;
+
+            &.newsletter-icon-success {
               color: #8bc34a;
-              animation: fadein 0.3s; }
-  @keyframes fadein {
-    from {
-      opacity: 0; }
-    to {
-      opacity: 1; } }
-              .item /deep/ .newsletter form label .newsletter-icon.newsletter-icon-success:hover {
-                cursor: pointer; }
-    .item .instagram, .item .travels {
+              animation: fadein 0.3s;
+              @keyframes fadein {
+                from { opacity: 0 }
+                to { opacity: 1 }
+              }
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    /* INSTAGRAM AND TRAVELS */
+    .instagram, .travels {
       position: relative;
-      transition: 0.3s; }
-      .item .instagram:after, .item .travels:after {
+      transition: $transition;
+
+      &:after {
         content: '';
         display: block;
         position: absolute;
@@ -91,16 +112,23 @@
         top: 0;
         width: 100%;
         height: 100%;
-        filter: brightness(0.6); }
-      .item .instagram:hover:after, .item .travels:hover:after {
-        filter: blur(2px) brightness(1); }
-      .item .instagram:hover h3, .item .travels:hover h3 {
-        background-color: #e5c014;
-        border: #e5c014;
-        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-        outline-color: rgba(255, 255, 255, 0);
-        outline-offset: 15px; }
-      .item .instagram h3, .item .travels h3 {
+        filter: brightness(0.6);
+      }
+
+      &:hover {
+        &:after {
+          filter: blur(2px) brightness(1)
+        }
+        h3 {
+          background-color: $primary-color;
+          border: $primary-color;
+          box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+          outline-color: rgba(255, 255, 255, 0);
+          outline-offset: 15px;
+        }
+      }
+
+      h3 {
         width: 90%;
         text-align: center;
         color: #fff;
@@ -113,29 +141,56 @@
         outline-offset: 0;
         text-shadow: none;
         transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-        z-index: 1; }
-    .item .travels:after {
-      background: url("https://res.cloudinary.com/dte02b2iw/image/upload/q_70,f_auto/common/widget-travel.jpg") no-repeat; } }
+        z-index: 1;
+      }
+
+    }
+
+    .travels:after {
+      background: url($travel-image) no-repeat;
+    }
+  }
+
+}
 
 /*
  * LARGE
  */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: $large) {
   .item {
-    /* NEWSLETTER */ }
-    .item.insta-item {
-      display: block; }
-    .item .instagram:after {
-      background: url("https://res.cloudinary.com/dte02b2iw/image/upload/q_70,f_auto/common/widget-insta.jpg") no-repeat; }
-    .item /deep/ .newsletter form {
-      width: 90%; } }
+    &.insta-item {
+      display: block;
+    }
+    .instagram:after {
+      background: url($instagram-image) no-repeat;
+    }
+
+    /* NEWSLETTER */
+    /deep/ .newsletter {
+
+      form {
+        width: 90%;
+      }
+    }
+
+  }
+}
+
 
 /*
  * DESKTOPS
  */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: $desktop) {
+
   /* ITEM */
   .item {
-    /* NEWSLETTER */ }
-    .item /deep/ .newsletter form {
-      width: 100%; } }
+    /* NEWSLETTER */
+    /deep/ .newsletter {
+
+      form {
+        width: 100%;
+      }
+    }
+  }
+
+}
